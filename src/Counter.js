@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { IncrementCounter } from "./redux/action";
+import { IncrementCounter, DecrementCounter } from "./redux/action";
 
 const Person = ({ name, age }) => {
   return (
@@ -12,15 +12,13 @@ const Person = ({ name, age }) => {
 };
 
 class Counter extends Component {
-  constructor(props) {
-    super(props);
-
-    this.setCounter = this.setCounter.bind(this);
-  }
-
-  setCounter() {
+  IncrementCounter = () => {
     this.props.IncrementCounter();
-  }
+  };
+
+  DecrementCounter = () => {
+    this.props.DecrementCounter();
+  };
 
   render() {
     const { ...props } = this.props;
@@ -28,8 +26,12 @@ class Counter extends Component {
       <div>
         <Person {...props} />
         <p>value count {this.props.count}</p>
-        <button className="btn btn-primary" onClick={this.setCounter}>
-          Set Counter
+        <button className="btn btn-primary" onClick={this.IncrementCounter}>
+          +
+        </button>
+        {` `}
+        <button className="btn btn-primary" onClick={this.DecrementCounter}>
+          -
         </button>
       </div>
     );
@@ -46,6 +48,9 @@ const mapDispatchToProps = dispatch => {
   return {
     IncrementCounter: () => {
       dispatch(IncrementCounter());
+    },
+    DecrementCounter: () => {
+      dispatch(DecrementCounter());
     }
   };
 };
