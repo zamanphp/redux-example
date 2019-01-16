@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { IncrementCounter, DecrementCounter } from "./redux/action";
-
-const Person = ({ name, age }) => {
-  return (
-    <div>
-      <h1>name : {name}</h1>
-      <h2>age : {age}</h2>
-    </div>
-  );
-};
+import Person from "./Person";
 
 class Counter extends Component {
   IncrementCounter = () => {
@@ -21,11 +13,12 @@ class Counter extends Component {
   };
 
   render() {
-    const { ...props } = this.props;
+    console.log("render counter");
+    const { count, name, age } = this.props;
     return (
       <div>
-        <Person {...props} />
-        <p>value count {this.props.count}</p>
+        <Person age={age} name={name} />
+        <p>value count {count}</p>
         <button className="btn btn-primary" onClick={this.IncrementCounter}>
           +
         </button>

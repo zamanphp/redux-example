@@ -17,20 +17,21 @@ export default class App extends Component {
   };
 
   render() {
+    console.log("render app");
+    const { name, age } = this.state;
     return (
       <div className="App">
         <header className="App-header">
-          <Counter name={this.state.name} age={this.state.age} />
-
+          <Counter name={name} age={age} />
           <input
             type="text"
-            value={this.state.name}
+            value={name}
             onChange={this.setName}
             placeholder="enter your name"
           />
           <input
             type="text"
-            value={this.state.age}
+            value={age}
             onChange={this.setAge}
             placeholder="enter your age"
           />
