@@ -17,7 +17,7 @@ class Counter extends Component {
     const { count, name, age } = this.props;
     return (
       <div>
-        <Person age={age} name={name} />
+        
         <p>value count {count}</p>
         <button className="btn btn-primary" onClick={this.IncrementCounter}>
           +
